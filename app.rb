@@ -24,27 +24,26 @@ Bonus
 
 =end
 
-
 require 'sinatra'
 require 'mongo'
 
 # setup MongoDB Connections
 mongo = Mongo::MongoClient.new
 db = mongo['hungry']
-coll = db['hungry']
-
-Coll = coll
-
-def populate_menu
-	# function to populate mongoDB with menu
-	menus = ['apetizers', 'entrees', 'deserts']
-	menus.each do |i|
-		Coll.insert({menu: "#{i}"})
-	end
-end
-
-# populate_menu # use if you want to populate
+coll = db['menus']
 
 get '/' do
-	return 'may i take your order'
+	@menu = coll.find()
+	@items = coll.find()
+	erb :home
 end
+
+
+
+
+
+
+
+
+
+

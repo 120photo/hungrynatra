@@ -1,0 +1,17 @@
+<form method="GET">
+
+<ul>
+	<% @menu.each do |m| %>
+	<li> <%= m['menu'] %>
+		<ul>
+			<li>
+				<select name="Select Your Grub">
+    				<option value=<%= m['items'] %> ><%= m['items'] %></option>
+				</select>
+			</li>
+		</ul>
+	</li>
+	<% end %>
+</ul>
+
+</form>
