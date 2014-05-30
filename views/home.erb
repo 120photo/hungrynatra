@@ -1,12 +1,13 @@
-<form method="GET">
-
+<form method="GET" action="/add">
 <ul>
 	<% @menu.each do |m| %>
 	<li> <%= m['menu'] %>
 		<ul>
 			<li>
-				<select name="Select Your Grub">
-    				<option value=<%= m['items'] %> ><%= m['items'] %></option>
+				<select name='@order' >
+					<% @items.each do |item| %>
+	    				<option value='<%= item['items'] %>'> : <%= item['items'] %> : </option>
+	    			<% end %>
 				</select>
 			</li>
 		</ul>
@@ -14,4 +15,39 @@
 	<% end %>
 </ul>
 
+<select name="@order2">
+		<option value='test'>test</option>
+</select>
+
+
+<div id="appetizer" class="container">
+	<h2>Appetizers</h2>
+	<select name="@appetizer_order">
+		<option value="none">No Appetizer Selected</option>
+		<option value="chips and salsa">Chips and Salsa</option>
+		<option value="bread and butter">Bread and Butter</option>
+	</select>
+</div>
+
+<div id="entree" class="container">
+	<h2>Entrees</h2>
+	<select name="@entree_order">
+		<option value="none">No Entree Selected</option>
+		<option value="foo">foo</option>
+		<option value="bar">bar</option>
+	</select>
+</div>
+
+<div id="dessert" class="container">
+	<h2>Yummy Post Meal Food</h2>
+	<select name="@dessert_order">
+		<option value="none">No Dessert Selected</option>
+		<option value="foo">foo</option>
+		<option value="bar">bar</option>
+	</select>
+</div>
+
+
+
+<input type="submit" name="" value="order my grub">
 </form>

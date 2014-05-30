@@ -30,17 +30,30 @@ require 'mongo'
 # setup MongoDB Connections
 mongo = Mongo::MongoClient.new
 db = mongo['hungry']
-coll = db['menus']
+menu_coll = db['menus']
+orders_coll = db['orders']
 
 get '/' do
-	@menu = coll.find()
-	@items = coll.find()
+	@menu = menu_coll.find()
+	@items = menu_coll.find()
 	erb :home
 end
 
+get '/orders' do
+	@orders = orders_coll.find()
+	erb :orders
+end
 
-
-
+get '/add' do
+	# orders_coll.insert({order: params[:@order]})
+	customer_order = []
+	customer_order.push(params[:@appetizer_order])
+	customer_order.push(params[:@entree_order])
+	customer_order.push(params[:@dessert_order])
+	customer_order.push(Time.now)
+	orders_coll.insert({order: customer_order})
+	redirect '/'
+end
 
 
 
