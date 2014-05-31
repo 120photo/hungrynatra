@@ -27,6 +27,8 @@ Bonus
 require 'sinatra'
 require 'mongo'
 
+set :bind, '0.0.0.0'
+
 # setup MongoDB Connections
 mongo = Mongo::MongoClient.new
 db = mongo['hungry']
@@ -36,27 +38,27 @@ orders_coll = db['orders']
 get '/' do
 	@menu = menu_coll.find()
 	@items = menu_coll.find()
+	@jumbo = "Order Your Grub"
 	erb :home
 end
 
 get '/orders' do
 	@orders = orders_coll.find()
+	@jumbo = "All Placed Orders"
 	erb :orders
 end
 
 get '/add' do
 	# orders_coll.insert({order: params[:@order]})
 	customer_order = []
-	customer_order.push(params[:@appetizer_order])
-	customer_order.push(params[:@entree_order])
-	customer_order.push(params[:@dessert_order])
+	customer_order.push("Appetizer : " + params[:@appetizer_order])
+	customer_order.push("Entrees : " + params[:@entree_order])
+	customer_order.push("Desset : " + params[:@dessert_order])
+	customer_order.push("Notes : " + params[:@notes])
 	customer_order.push(Time.now)
 	orders_coll.insert({order: customer_order})
-	redirect '/'
+	@your_order = customer_order.join(', ')
+	@jumbo = "=)"
+	erb :add
 end
-
-
-
-
-
 

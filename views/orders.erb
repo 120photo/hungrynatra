@@ -1,7 +1,4 @@
-<ul class=" container list-group">
-	<div class="jumbotron">
-		<h1>All Placed Orders</h1>
-	</div>
+<ul class="list-group">
 	<% @orders.each do |order| %>
 	<li class="list-group-item"><%= order['order'] %></li>
 	<% end %>

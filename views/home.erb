@@ -1,26 +1,6 @@
 <form method="GET" action="/add">
-<ul>
-	<% @menu.each do |m| %>
-	<li> <%= m['menu'] %>
-		<ul>
-			<li>
-				<select name='@order' >
-					<% @items.each do |item| %>
-	    				<option value='<%= item['items'] %>'> : <%= item['items'] %> : </option>
-	    			<% end %>
-				</select>
-			</li>
-		</ul>
-	</li>
-	<% end %>
-</ul>
 
-<select name="@order2">
-		<option value='test'>test</option>
-</select>
-
-
-<div id="appetizer" class="container">
+<div id="appetizer" class="col-md-4">
 	<h2>Appetizers</h2>
 	<select name="@appetizer_order">
 		<option value="none">No Appetizer Selected</option>
@@ -29,25 +9,30 @@
 	</select>
 </div>
 
-<div id="entree" class="container">
+<div id="entree" class="col-md-4">
 	<h2>Entrees</h2>
 	<select name="@entree_order">
 		<option value="none">No Entree Selected</option>
-		<option value="foo">foo</option>
-		<option value="bar">bar</option>
+		<option value="pizza">Pizza</option>
+		<option value="super salad">Super Salad</option>
+		<option value="sushi plate">Sushi Plate</option>
 	</select>
 </div>
 
-<div id="dessert" class="container">
+<div id="dessert" class="col-md-4">
 	<h2>Yummy Post Meal Food</h2>
 	<select name="@dessert_order">
 		<option value="none">No Dessert Selected</option>
-		<option value="foo">foo</option>
-		<option value="bar">bar</option>
+		<option value="ice cream">Ice Cream</option>
+		<option value="huge cookie">Huge Cookie</option>
+		<option value="cake">Cake</option>
 	</select>
 </div>
 
+<h3>Notes</h3>
 
+<input type="textarea" name="@notes" value="" placeholder="">
 
-<input type="submit" name="" value="order my grub">
+<input type="submit" name="" value="Place My Order">
+
 </form>

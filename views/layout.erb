@@ -17,12 +17,26 @@
 </style>
 
 <body>
+
+<div class="container">
+	
+<div class="jumbotron">
+	<h1><%= @jumbo %></h1>
+</div>
+
+<header id="header" class="">
+	<ul class="nav nav-tabs">
+		<li><a href="/">Home</a></li>
+		<li><a href="/orders">Orders</a></li>
+	</ul>
+</header><!-- /header -->
+
 <!-- layour template end -->
 
 <%= yield %>
 
 <!-- layour template start -->
-
+</div>
 
 </body>
 </html>
